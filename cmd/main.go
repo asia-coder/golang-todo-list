@@ -7,12 +7,14 @@ import (
 	"github.com/asiaCoder/todo-app/pkg/service"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"log"
 	"os"
 )
 
 func main() {
+	log.SetFormatter(&log.JSONFormatter{})
+
 	if err := initConfig(); err != nil {
 		log.Fatalf("Ошибка при чтение конфигурационного файла: %s", err.Error())
 	}
